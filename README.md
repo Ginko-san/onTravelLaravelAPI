@@ -3,10 +3,10 @@
     <img src="http://jnyconstruction.ie/wp-content/uploads/2015/11/icon-hammer-wrench.png" width=100 height=100>
   </a>
 
-  <h3 align="center">Web Scraping Project</h3>
+  <h3 align="center">OnTravel Project</h3>
 
   <p align="center">
-    Course Project "Introduccion al desarrollo de aplicaciones web."
+    Course Project "Diseño"
     <br>
     <strong>Hello Guys :3 &raquo;</strong>
   </p>
