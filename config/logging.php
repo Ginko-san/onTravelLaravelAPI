@@ -39,8 +39,8 @@ return [
         ],
 
         'single' => [
-            'driver' => 'single',
-            'path' => storage_path('logs/laravel.log'),
+            'driver' => 'errorlog',
+            //'path' => storage_path('logs/laravel.log'),
             'level' => 'debug',
         ],
 
@@ -59,8 +59,8 @@ return [
             'level' => 'critical',
         ],
 
+        'driver' => 'monolog',
         'stderr' => [
-            'driver' => 'monolog',
             'handler' => StreamHandler::class,
             'with' => [
                 'stream' => 'php://stderr',
