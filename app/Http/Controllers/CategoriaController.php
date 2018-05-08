@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Categoria;
+use App\Http\Resources\CategoriaResource;
 use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
@@ -14,7 +15,8 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        $categorias = Categoria::all();
+        return $categorias;
     }
 
     /**
@@ -35,7 +37,14 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name'  => 'required',
+        ]);
+
+        $categoria = new Categoria($request->all());
+        $categoria->save();
+
+        return $categoria;
     }
 
     /**
@@ -46,7 +55,9 @@ class CategoriaController extends Controller
      */
     public function show(Categoria $categoria)
     {
-        //
+        CategoriaResource::withoutWrapping();
+        
+        return new CategoriaResource($categoria);
     }
 
     /**
