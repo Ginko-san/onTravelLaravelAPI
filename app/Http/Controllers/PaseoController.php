@@ -16,6 +16,8 @@ class PaseoController extends Controller
     public function index()
     {
         //
+        $paseos = Paseo::all();
+        return $paseos;
         
     }
 
@@ -37,7 +39,7 @@ class PaseoController extends Controller
      */
     public function store(Request $request)
     {
-        $this.validate($request, [
+        $this->validate($request, [
             'name'          => 'required',
             'fecha'         => 'required',
             'localizacion'  => 'required',
@@ -47,10 +49,10 @@ class PaseoController extends Controller
             'costo'         => 'required',
             'categoria_id'  => 'required',
         ]);
-        $paseo = new Paseo($request);
+        $paseo = new Paseo($request->all());
         $paseo->save();
 
-
+        return $paseo;
     }
 
     /**
@@ -61,6 +63,8 @@ class PaseoController extends Controller
      */
     public function show(Paseo $paseo)
     {
+        PaseoResource::withoutWrapping();
+        
         return new PaseoResource($paseo);
     }
 
