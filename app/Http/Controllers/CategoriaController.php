@@ -78,19 +78,30 @@ class CategoriaController extends Controller
      * @param  \App\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categoria $categoria)
+    public function update(Request $request, $id)
     {
-        //
+        $categoria = Categoria::find($id);
+        if (!$categoria)
+            return ['state' => false, 'error' => 'No se encontro la categoria especificada.'];
+        else {
+            $categoria = Categoria::find($id);
+            $categoria->id = $request->id;
+            $categoria->name = $request->name;
+            $categoria->save();
+            return ['state' => true, 'error' => ''];
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Categoria  $categoria
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categoria $categoria)
+    public function destroy($id)
     {
-        //
+        $categoria = Categoria::find($id);
+        $categoria->delete();
+        return ['state' => true];
     }
 }
