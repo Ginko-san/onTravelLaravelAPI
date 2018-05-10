@@ -16,9 +16,10 @@ class CategoriaResource extends ResourceCollection
     {
         //return parent::toArray($request);
         return [
-            'type'      =>  'categorias',
-            'id'        =>  (string)$this->id,
+            //'type'      =>  'categorias',
+            //'id'        =>  (string)$this->id,
             'atributes' => [
+                'id'        =>  (string)$this->id,
                 'name'          =>  $this->name,
             ],
         ];

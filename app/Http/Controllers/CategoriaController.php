@@ -16,7 +16,7 @@ class CategoriaController extends Controller
     public function index()
     {
         $categorias = Categoria::all();
-        return $categorias;
+        return ['categorias' => $categorias];
     }
 
     /**
@@ -53,11 +53,16 @@ class CategoriaController extends Controller
      * @param  \App\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function show(Categoria $categoria)
+    public function show($id)
     {
-        CategoriaResource::withoutWrapping();
+        //CategoriaResource::withoutWrapping();
         
-        return new CategoriaResource($categoria);
+        //return new CategoriaResource($categoria);
+        $categoria = Categoria::find($id);
+
+        if (!$categoria)
+            return ['state' => false, 'error' => 'No se encontro la categoria especificada.'];
+        return ['categorias' => $categoria];
     }
 
     /**
