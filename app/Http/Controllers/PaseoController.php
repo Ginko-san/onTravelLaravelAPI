@@ -13,14 +13,48 @@ class PaseoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
         $paseos = Paseo::all();
-        return $paseos;
         
+        return ['paseos' => $paseos];
     }
 
+    /**
+     * Display a few data of Paseo, for a list of paseos into the Mobile App
+     *
+     * @param   int $id 
+     * @return \Illuminate\Http\Response
+     */
+    public function reduced($id) {
+        $paseos = Paseo::where('categoria_id', $id)->get();
+        $numberOfPaseos = $paseos->count();
+        $response = [];
+
+        for ($i = 0; $i < $numberOfPaseos; $i++)
+           $response[$i] = ['id' => $paseos[$i]->id, 'name' => $paseos[$i]->name , 'localizacion' => $paseos[$i]->localizacion, 'costo' => $paseos[$i]->costo];
+        return $response;
+    }
+
+    /**
+     * Display a JSON of a specific Image
+     *  
+     * @param   int $id
+     * @return JSON response
+     */
+    public function image($id) 
+    {
+        $paseo = Paseo::find($id);
+        $paseo = json_decode($paseo, true);
+        return ['paseo' => ['imagen' => $paseo['imagen']]];
+    }
+
+    /**
+     * Display Paseos Blade
+     */
+    public function indexVista() {
+        $paseos = Paseo::all();
+        return view('paseo.index',['paseos'=>$paseos]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -74,9 +108,10 @@ class PaseoController extends Controller
      * @param  \App\Paseo  $paseo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Paseo $paseo)
+    public function edit($id)
     {
-        //
+        $paseo = Paseo::find($id);
+        return view('paseo.edit',['paseo'=>$paseo]);
     }
 
     /**

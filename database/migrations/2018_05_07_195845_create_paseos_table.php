@@ -23,7 +23,7 @@ class CreatePaseosTable extends Migration
             $table->string('telefono', 9);
             $table->string('website', 50)->nullable();
             $table->text('descripcion')->nullable();
-            $table->text('imagen')->nullable(); // Imagen en bitcode
+            $table->text('imagen')->nullable(); // Imagen en base64
             $table->float('costo', 11, 2);
             $table->unsignedInteger('categoria_id');
             $table->foreign('categoria_id')

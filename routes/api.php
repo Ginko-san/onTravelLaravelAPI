@@ -20,4 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //Route::middleware('auth:api')->resource('/paseos', 'PaseoController');
 
 Route::resource('/paseos', 'PaseoController');
+Route::get('/paseos/reduced/{id}', 'PaseoController@reduced')->name('paseos.reduced');
+Route::get('/paseos/image/{id}', 'PaseoController@image')->name('paseos.image');
+
+
 Route::resource('/categorias', 'CategoriaController');
