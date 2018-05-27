@@ -46,7 +46,7 @@ class PaseoController extends Controller
     {
         $paseo = Paseo::find($id);
         $paseo = json_decode($paseo, true);
-        return ['paseo' => ['imagen' => $paseo['imagen']]];
+        return ['imagen' => $paseo['imagen']];
     }
 
     /**
