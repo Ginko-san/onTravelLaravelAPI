@@ -32,7 +32,8 @@ class PaseoController extends Controller
 
         for ($i = 0; $i < $numberOfPaseos; $i++)
            $response[$i] = ['id' => $paseos[$i]->id, 'name' => $paseos[$i]->name , 'localizacion' => $paseos[$i]->localizacion, 'costo' => $paseos[$i]->costo];
-        return $response;
+        
+        return ['paseos' => $response];
     }
 
     /**
