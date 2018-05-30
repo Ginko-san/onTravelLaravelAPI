@@ -37,6 +37,38 @@ class PaseoController extends Controller
     }
 
     /**
+     * Display all data of Paseo to except the image, for a list of paseos into the Mobile App
+     *
+     * @param   int $id 
+     * @return \Illuminate\Http\Response
+     */
+    public function exceptImage($id) {
+        $paseo = Paseo::find($id);
+        
+        if ($paseo == null)
+            return ['state' => 'error', 'description' => 'The id doesnt exist'];
+
+        $response = [];
+
+        $response = [
+            'id' => $paseo->id, 
+            'name' => $paseo->name , 
+            'fecha' => $paseo->fecha, 
+            'localizacion' => $paseo->localizacion, 
+            'latitud' => $paseo->latitud, 
+            'longitud' => $paseo->longitud, 
+            'telefono' => $paseo->telefono, 
+            'website' => $paseo->website, 
+            'descripcion' => $paseo->descripcion, 
+            'costo' => $paseo->costo,
+            'categoria_id' => $paseo->categoria_id
+        ];
+    
+        return ['paseo' => $response];
+    }
+
+
+    /**
      * Display a JSON of a specific Image
      *  
      * @param   int $id

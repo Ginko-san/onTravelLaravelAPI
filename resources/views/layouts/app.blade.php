@@ -24,7 +24,16 @@
         @include('menu')
 
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                <div class="row">
+                    @guest
+                        @yield('content')
+                    @else
+                        @include('layouts.sidemenu')
+                        @yield('content')
+                    @endguest
+                </div>
+            </div>
         </main>
     </div>
 </body>

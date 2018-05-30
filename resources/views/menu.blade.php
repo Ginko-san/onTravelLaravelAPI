@@ -4,14 +4,6 @@
       <a class="navbar-brand" href="{{ url('/home') }}">OnTravel</a>
     </div>
     
-        <ul class="nav navbar-nav">
-        @if (Auth::check())
-            <li><a href="{{ url('/paseos') }}" class="navbar-color">My Travels</a></li>
-            <li><a href="{{ url('/contact') }}" class="navbar-color">Contact Us</a></li>
-        @else
-        @endif
-        </ul>
-        
         <ul class="nav navbar-nav navbar-right">
         @guest
             <li><a class="navbar-color" href="{{ route('login') }}" ><img src="images/login-user.png"/> Login</a></li>
@@ -19,7 +11,18 @@
         @else
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle navbar-color" data-toggle="dropdown" role="button" aria-expanded="false">
-                    <img src="images/login-user.png"/> {{ Auth::user()->name }} <span class="caret"></span>
+                <img class="resize" 
+                    @if (Auth::user()->imagen != '')
+                        src="{{ Auth::user()->imagen }}"
+                    @else
+                        src="images/login-user.png"
+                    @endif
+                    >
+                        @if (Auth::user()->is_admin == 1)
+                            <strong>Admin |</strong>
+                        @endif
+                        {{ Auth::user()->name }}
+                     <span class="caret"></span>
                 </a>
 
                 <ul class="dropdown-menu" role="menu">

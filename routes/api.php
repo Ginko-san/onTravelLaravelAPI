@@ -21,6 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('/paseos', 'PaseoController');
 Route::get('/paseos/reduced/{id}', 'PaseoController@reduced')->name('paseos.reduced');
+Route::get('/paseos/detail/{id}', 'PaseoController@exceptImage')->name('paseos.reducedByImage');
 Route::get('/paseos/image/{id}', 'PaseoController@image')->name('paseos.image');
 
 

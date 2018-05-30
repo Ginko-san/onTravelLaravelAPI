@@ -26,6 +26,8 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::get('/paseos', 'PaseoController@indexVista')->name('paseos.indexVista');
 	Route::get('/paseos/{id}/edit', 'PaseoController@edit')->name('paseos');
 	Route::put('/paseos/{id}', 'PaseoController@update')->name('paseos');
+
+	Route::get('/categorias', 'CategoriaController@indexVista')->name('categorias.indexVista');
 });
 
 
