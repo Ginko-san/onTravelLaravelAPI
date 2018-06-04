@@ -24,10 +24,12 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/home', 'HomeController@index')->name('home');
 	
 	Route::get('/paseos', 'PaseoController@indexVista')->name('paseos.indexVista');
+	Route::get('/paseos/create', 'PaseoController@create')->name('paseos.createVista');
 	Route::get('/paseos/{id}/edit', 'PaseoController@edit')->name('paseos');
 	Route::put('/paseos/{id}', 'PaseoController@update')->name('paseos');
 
 	Route::get('/categorias', 'CategoriaController@indexVista')->name('categorias.indexVista');
+	Route::get('/categorias/create', 'CategoriaController@create')->name('categorias.createVista');
 });
 
 

@@ -1,7 +1,10 @@
 body {
-    background-color: #586f7c;
+	background-color: #586f7c;
 }
 
+form {
+	color: #fff;
+}
 .resize {
     width: 25px; /* you can use % */
 	height: 25px;
@@ -104,4 +107,10 @@ tr th {
 
 .row-parent > div {
 	float: right;
+}
+
+@media (max-width: 768px) {
+	#parent-row > div {
+		top: 30px;
+	}
 }

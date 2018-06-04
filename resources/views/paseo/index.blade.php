@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-<div class="panel-body">
-    <a href="{{ route('paseos.create') }}" class="btn btn-primary col-xs-offset-10 col-xs-2 col-sm-offset-10 col-sm-2 col-md-offset-10 col-md-2 col-lg-offset-10 col-lg-2" role="button">Nuevo Viaje</a>
+<div class="panel-body col-xs-12 col-sm-offset-4 col-sm-8 col-md-offset-3 col-md-9 col-lg-offset-2 col-lg-10">
+    <a href="{{ route('paseos.createVista') }}" class="btn btn-primary col-xs-2 col-sm-2 col-md-2 col-lg-2" role="button">Nuevo Viaje</a>
     <table class="table table-hover margin-top">
         <thead>
             <tr>

@@ -26,7 +26,8 @@ class CategoriaController extends Controller
      */
     public function indexVista() 
     {
-        
+        $categorias = Categoria::all();
+        return view('categoria.index',['categorias'=>$categorias, 'message' => '']);
     }
 
 
@@ -37,7 +38,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('categoria.create');
     }
 
     /**
@@ -55,7 +56,8 @@ class CategoriaController extends Controller
         $categoria = new Categoria($request->all());
         $categoria->save();
 
-        return $categoria;
+        #return $categoria;
+        return redirect()->route('categorias.indexVista')->with('message','data has been updated!');
     }
 
     /**
@@ -118,6 +120,8 @@ class CategoriaController extends Controller
     {
         $categoria = Categoria::find($id);
         $categoria->delete();
-        return ['state' => true];
+        #return ['state' => true];
+        return redirect()->route('categorias.indexVista');
+        #return view('categoria.index', ['message' => 'La categoria ha sido eliminada correctamente!']);
     }
 }

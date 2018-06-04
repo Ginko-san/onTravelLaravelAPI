@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Paseo;
+use App\Categoria;
 use App\Http\Resources\PaseoResource;
 use Illuminate\Http\Request;
 
@@ -95,7 +96,8 @@ class PaseoController extends Controller
      */
     public function create()
     {
-        
+        $categorias = Categoria::all();
+        return view('paseo.create',['categorias'=>$categorias]);
     }
 
     /**
@@ -106,6 +108,8 @@ class PaseoController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $this->validate($request, [
             'name'          => 'required',
             'fecha'         => 'required',
@@ -119,7 +123,9 @@ class PaseoController extends Controller
         $paseo = new Paseo($request->all());
         $paseo->save();
 
-        return $paseo;
+        var_dump('maldita sea');
+        
+        return redirect()->route('paseos.indexVista')->with('message','data has been updated!');
     }
 
     /**

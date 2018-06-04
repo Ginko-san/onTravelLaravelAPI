@@ -10,14 +10,18 @@
 
     <title>On Travel Web Admin</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    
+    
 
     <!-- Fonts -->
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/general.css') }}" rel="stylesheet">
+
+    <!-- Datepicker -->
+    <link href="{{ asset('css/bootstrap-datepicker.min.css') }}" rel='stylesheet' type='text/css'>
+
 </head>
 <body>
     <div id="app">
@@ -25,7 +29,7 @@
 
         <main class="py-4">
             <div class="container">
-                <div class="row">
+                <div class="row" id="parent-row">
                     @guest
                         @yield('content')
                     @else
@@ -36,6 +40,19 @@
             </div>
         </main>
     </div>
+
+    <!-- Scripts -->
+        <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+        <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+
+
+    
+    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}" type='text/javascript'></script>
+    <script src="{{ asset('js/general.js') }}"></script>
+
 </body>
 </html>
 

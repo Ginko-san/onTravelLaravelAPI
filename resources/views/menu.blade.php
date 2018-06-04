@@ -6,8 +6,8 @@
     
         <ul class="nav navbar-nav navbar-right">
         @guest
-            <li><a class="navbar-color" href="{{ route('login') }}" ><img src="images/login-user.png"/> Login</a></li>
-            <li><a class="navbar-color" href="{{ route('register') }}"><img src="images/Register.png"/> Register</a></li>
+            <li><a class="navbar-color" href="{{ route('login') }}" ><img src="{{ asset('images/login-user.png') }}"/> Login</a></li>
+            <li><a class="navbar-color" href="{{ route('register') }}"><img src="{{ asset('images/Register.png') }}"/> Register</a></li>
         @else
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle navbar-color" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -30,7 +30,7 @@
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
-                            <img src="images/logout.png"/>
+                            <img src="{{ asset('images/logout.png') }}"/>
                             Logout
                         </a>
 
